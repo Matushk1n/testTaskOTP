@@ -1,5 +1,6 @@
 package utils;
 
+import lombok.SneakyThrows;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
@@ -18,7 +19,8 @@ public class Configurations {
         this.pomFile = new File(path);
     }
 
-    public List<Dependency> getDependencies() throws IOException, XmlPullParserException {
+    @SneakyThrows
+    public List<Dependency> getDependencies() {
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = reader.read(new FileReader(pomFile));
         return model.getDependencies();
